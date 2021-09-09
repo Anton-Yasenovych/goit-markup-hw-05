@@ -119,9 +119,10 @@ body {
 .link:focus {
   color: var(--accent-color);
 }
-.img {
+img {
   display: block;
   max-width: 100%;
+  height: auto;
 }
 /* logo */
 .logo {
@@ -141,7 +142,7 @@ body {
 /* header */
 .header {
   background-color: var(--secundary-text);
-  border-bottom: 1px solid var(--header-line-color);
+  border-bottom: -1px solid var(--header-line-color);
 } 
 .header, .container {
   display: flex;
@@ -182,7 +183,7 @@ body {
 .current::after {
    position: absolute;
    left: 0;
-   bottom: 0;
+   bottom: -1px;
   content: '';
   display: block;
   width: 100%;
@@ -195,13 +196,8 @@ body {
 .current::after {
   opacity: 100%;
 }
-.icons-header {
-  transition-property: fill; 
-  transition-duration: 250ms;
-  transition-timing-function: var(--timing-function);
-}
-.link:hover .icons-header,
-.link:focus .icons-header {
+.link:hover,
+.link:focus {
 fill: var(--accent-color);
 }
 .icon-contact {
@@ -212,7 +208,10 @@ margin-right: 10px;
   vertical-align: middle;
 align-items: center;
 display: flex;
-fill: var(--color-icon);
+fill: currentColor;
+transition-property: fill; 
+  transition-duration: 250ms;
+  transition-timing-function: var(--timing-function);
 }
 .envelope, .smartphone {
   display: inline-block;
@@ -284,9 +283,7 @@ box-shadow: var(--box-shadow);
   background-color: var(--background-color-hover-btn-hero);
   box-shadow: var(--box-shadow);
   color: var(--secundary-text);
-  
 }
-
 /* ouer advantage */
 .visually-hidden {
   width: 1px;
@@ -321,16 +318,16 @@ background-repeat: no-repeat;
 background-position: center;
 }
 .it-advant-1::before {
-background-image: url(../images/advantage/antenna\ 1\ \(1\).svg);
+background-image: url(../images/advantage/antenna.svg);
 }
 .it-advant-2::before {
-  background-image: url(../images/advantage/clock\ 1\ \(1\).svg);
+  background-image: url(../images/advantage/clock.svg);
 }
 .it-advant-3::before {
- background-image: url(../images/advantage/diagram\ 1\ \(1\).svg); 
+ background-image: url(../images/advantage/diagram.svg); 
 }
 .it-advant-4::before {
-  background-image: url(../images/advantage/astronaut\ 1\ \(1\).svg);
+  background-image: url(../images/advantage/astronaut.svg);
 }
 .title-p {
   width: 270px;
@@ -375,8 +372,10 @@ background-image: url(../images/advantage/antenna\ 1\ \(1\).svg);
   min-width: 370px;
 }
 .label {
-  align-items: center;
+  display: flex;
 position: absolute;
+align-items: center;
+justify-content: center;
 width: 100%;
 height: 70px;
 bottom: 0;
@@ -389,8 +388,6 @@ text-align: center;
 letter-spacing: 0.03em;
 text-transform: uppercase;
 color: var(--secundary-text);
-padding-top: 27px;
-padding-bottom: 27px;
 }
 /* team */
 .section-team {
@@ -454,8 +451,9 @@ align-items: center;
 justify-content: space-between;
 }
 .link-icon {
-  padding: 12px;
-display: inline-block;
+display: flex;
+justify-content: center;
+align-items: center;
 width: 44px; height: 44px;
 border-radius: 50%;
 background-color: var(--background-color-icon-card-team);
@@ -464,13 +462,11 @@ background-color: var(--background-color-icon-card-team);
   transition-timing-function: var(--timing-function);
 }
 .icon-team {
+  fill: #AFB1B8;
   justify-content: space-evenly;
  display: inline-block;
   vertical-align: middle;
   width: 20px; height: 20px;
-  transition-property: fill; 
-  transition-duration: 250ms;
-  transition-timing-function: var(--timing-function);
 }
 .link-icon:hover,
 .link-icon:focus {
@@ -490,38 +486,30 @@ fill: white;
 }
 .item-client {
   display: block;
+margin-top: var(--margin-top-30);
+margin-left: var(--margin-left-30);
 }
 .client-link {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 width: 170px;
 height: 92px;
 border: 1px solid #AFB1B8;
 border-radius: var(--border-radius-4);
-padding-top: 16px;
-padding-right: 32px;
-padding-bottom: 16px;
-padding-left: 32px;
-margin-top: var(--margin-top-30);
-margin-left: var(--margin-left-30);
-transition-property: border-color; 
-transition-duration: 250ms;
-transition-timing-function: var(--timing-function);
+color: #AFB1B8;
+transition-property: border-color, color; 
+  transition-duration: 250ms;
+  transition-timing-function: var(--timing-function);
 }
 .icon-client {
 width: 106px;
 height: 60px;
-fill: #AFB1B8;
-transition-property: fill; 
-  transition-duration: 250ms;
-  transition-timing-function: var(--timing-function);
+fill: currentColor;
 }
 .client-link:hover,
 .client-link:focus {
-border-color: var(--accent-color);
-}
-.link:focus .icon-client,
-.link:hover .icon-client {
-    fill: var(--accent-color);
+  border-color: var(--accent-color);
 }
 /* main portfolio */
 .buttons-list-portfolio {
@@ -721,6 +709,7 @@ color: var(--secundary-text);
   transition: opacity 250ms, visibility 250ms;
   transition-duration: 250ms;
   transition-timing-function: var(--timing-function);
+  cursor: pointer;
 } 
 .modal {
   display: block;
